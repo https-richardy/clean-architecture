@@ -2,10 +2,12 @@ namespace Project.Domain.Entities;
 
 public sealed class Product : Entity
 {
-    public string Title { get; private set; } = string.Empty;
-    public decimal Price { get; private set; }
+    public string Title { get; set; } = string.Empty;
+    public decimal Price { get; set; }
 
-    private Product(string title, decimal price)
+    public Product() {  }
+
+    public Product(string title, decimal price)
     {
         Title = title;
         Price = price;
