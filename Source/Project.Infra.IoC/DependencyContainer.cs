@@ -10,9 +10,9 @@ public static class DependencyContainer
     {
         services.AddDataPersistence(configuration);
 
-        services.AddMediator();
+        services.AddMapping();
 
-        services.AddTinyMapping();
+        services.AddMediator();
         services.AddValidation();
     }
 }
