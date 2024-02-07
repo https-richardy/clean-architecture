@@ -6,12 +6,10 @@ namespace Project.WebApi.Middlewares;
 public class ValidationExceptionMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly ILogger<ValidationExceptionMiddleware> _logger;
 
-    public ValidationExceptionMiddleware(RequestDelegate next, ILogger<ValidationExceptionMiddleware> logger)
+    public ValidationExceptionMiddleware(RequestDelegate next)
     {
         _next = next;
-        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext httpContext)
@@ -22,8 +20,6 @@ public class ValidationExceptionMiddleware
         }
         catch (ValidationException validationException)
         {
-            _logger.LogInformation("ValidationException caught: {ValidationErrors}", validationException.Errors);
-
             httpContext.Response.StatusCode = 400;
             httpContext.Response.ContentType = "application/json";
 
@@ -37,15 +33,6 @@ public class ValidationExceptionMiddleware
             await httpContext.Response.WriteAsync(jsonResponse);
 
             return;
-        }
-        catch (Exception exception)
-        {
-            _logger.LogError(exception, "An unexpected error occurred.");
-
-            httpContext.Response.StatusCode = 500;
-            httpContext.Response.ContentType = "application/json";
-
-            await httpContext.Response.WriteAsync("An unexpected error occurred.");
         }
     }
 }
