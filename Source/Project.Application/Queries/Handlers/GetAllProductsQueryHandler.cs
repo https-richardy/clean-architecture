@@ -24,15 +24,14 @@ public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, I
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        IQueryable<Product> query = (IQueryable<Product>)_productRepository.GetAllAsync();
+        IEnumerable<Product> products = await _productRepository.GetAllAsync();
 
         if (request.MinimumPrice.HasValue)
-            query.Where(product => product.Price >= request.MinimumPrice);
+            products = products.Where(product => product.Price >= request.MinimumPrice);
 
         if (request.MaximumPrice.HasValue)
-            query.Where(product => product.Price <= request.MaximumPrice);
+            products = products.Where(product => product.Price <= request.MaximumPrice);
 
-        var products = query.ToList();
-        return products;
+        return products.ToList();
     }
 }
