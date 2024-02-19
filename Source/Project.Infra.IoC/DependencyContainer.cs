@@ -9,10 +9,13 @@ public static class DependencyContainer
     public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDataPersistence(configuration);
-
         services.AddMapping();
-
         services.AddMediator();
+
         services.AddValidation();
+
+        /* Security 'n Identity */
+        services.AddIdentityServices();
+        services.AddSecurity(configuration);
     }
 }
