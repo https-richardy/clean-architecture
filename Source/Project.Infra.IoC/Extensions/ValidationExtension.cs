@@ -1,6 +1,9 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Project.Application.Commands;
+using Project.Application.ProductContext.Commands;
+using Project.Application.ProductContext.Queries;
+using Project.Application.ProductContext.Validation;
 using Project.Application.Queries;
 using Project.Application.Validation;
 

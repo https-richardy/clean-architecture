@@ -3,7 +3,7 @@ using MediatR;
 using Project.Domain.Contracts;
 using Project.Domain.Entities;
 
-namespace Project.Application.Queries.Handlers;
+namespace Project.Application.ProductContext.Queries.Handlers;
 
 public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
 {

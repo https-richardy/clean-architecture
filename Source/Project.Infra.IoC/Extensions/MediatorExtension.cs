@@ -4,6 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Project.Application.Commands;
 using Project.Application.Commands.Handlers;
+using Project.Application.ProductContext.Commands;
+using Project.Application.ProductContext.Commands.Handlers;
+using Project.Application.ProductContext.Commands.Responses;
+using Project.Application.ProductContext.Queries;
+using Project.Application.ProductContext.Queries.Handlers;
 using Project.Application.Queries;
 using Project.Application.Queries.Handlers;
 using Project.Domain.Entities;
