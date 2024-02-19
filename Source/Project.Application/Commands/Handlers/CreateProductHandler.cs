@@ -1,6 +1,6 @@
-using AutoMapper;
 using FluentValidation;
 using MediatR;
+using Nelibur.ObjectMapper;
 using Project.Domain.Contracts;
 using Project.Domain.Entities;
 
@@ -10,16 +10,13 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 {
     private readonly IRepository<Product> _productRepository;
     private readonly IValidator<CreateProductCommand> _validator;
-    private readonly IMapper _mapper;
 
-    public CreateProductCommandHandler(IRepository<Product> productRepository, IValidator<CreateProductCommand> validator, IMapper mapper)
+    public CreateProductCommandHandler(IRepository<Product> productRepository, IValidator<CreateProductCommand> validator)
     {
         _productRepository = productRepository;
         _validator = validator;
-        _mapper = mapper;
     }
 
-    # pragma warning disable CS8604
     public async Task<CreateProductResponse> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var validationResult = await _validator.ValidateAsync(request);
@@ -27,7 +24,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var product = _mapper.Map<Product>(request);
+        var product = TinyMapper.Map<Product>(request);
         await _productRepository.SaveAsync(product);
 
         return new CreateProductResponse
