@@ -12,4 +12,20 @@ public sealed class Product : Entity
         Title = title;
         Price = price;
     }
+
+    public void SetDiscount(decimal discountPercentage)
+    {
+        decimal discountAmount = (discountPercentage * Price) / 100;
+        Price -= discountAmount;
+    }
+
+    public void IncreasePrice(decimal amount)
+    {
+        Price += amount;
+    }
+
+    public void DecreasePrice(decimal amount)
+    {
+        Price -= amount;
+    }
 }
