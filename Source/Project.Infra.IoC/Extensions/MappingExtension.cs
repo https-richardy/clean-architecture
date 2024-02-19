@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nelibur.ObjectMapper;
 using Project.Application.Commands;
-using Project.Application.Queries;
+using Project.Application.ProductContext.Commands;
 using Project.Domain.Entities;
 using Project.Infra.Identity;
 
@@ -12,6 +12,7 @@ public static class MappingExtension
     public static void AddMapping(this IServiceCollection services)
     {
         # region Product Mappings
+
         TinyMapper.Bind<CreateProductCommand, Product>(config =>
         {
             config.Bind(source => source.Name, target => target.Title);

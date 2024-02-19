@@ -1,7 +1,7 @@
 using FluentValidation;
-using Project.Application.Queries;
+using Project.Application.ProductContext.Queries;
 
-namespace Project.Application.Validation;
+namespace Project.Application.ProductContext.Validation;
 
 public class GetAllProductsQueryValidator : AbstractValidator<GetAllProductsQuery>, IValidator<GetAllProductsQuery>
 {

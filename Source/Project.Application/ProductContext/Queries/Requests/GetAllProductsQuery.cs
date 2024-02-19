@@ -1,7 +1,7 @@
 using MediatR;
 using Project.Domain.Entities;
 
-namespace Project.Application.Queries;
+namespace Project.Application.ProductContext.Queries;
 
 public class GetAllProductsQuery : IRequest<IEnumerable<Product>>
 {

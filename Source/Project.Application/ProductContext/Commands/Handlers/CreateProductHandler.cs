@@ -1,10 +1,11 @@
 using FluentValidation;
 using MediatR;
 using Nelibur.ObjectMapper;
+using Project.Application.ProductContext.Commands.Responses;
 using Project.Domain.Contracts;
 using Project.Domain.Entities;
 
-namespace Project.Application.Commands.Handlers;
+namespace Project.Application.ProductContext.Commands.Handlers;
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductResponse>
 {
