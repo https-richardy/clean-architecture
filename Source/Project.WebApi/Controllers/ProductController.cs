@@ -9,7 +9,7 @@ namespace Project.WebApi.Controllers;
 [Route("api/products")]
 public class ProductController : ControllerBase
 {
-    private IMediator _mediator;
+    private readonly IMediator _mediator;
 
     public ProductController(IMediator mediator)
     {
